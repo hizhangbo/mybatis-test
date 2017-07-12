@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zqdt.weibo.repository.mapper.UserMapper">
+    <select id="getById" parameterType="Long" resultType="User">
+        select kid,pid,id,idstr,screen_name,name,province,city,location,description,url,profile_image_url,profile_url,
+        domain,weihao,gender,followers_count,friends_count,statuses_count,favourites_count,created_at,following,
+        allow_all_act_msg,geo_enabled,verified,verified_type,remark,allow_all_comment,avatar_large,avatar_hd,verified_reason,
+        follow_me,online_status,bi_followers_count,lang from user where id = #{id} limit 0,1
+    </select>
+
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="kid">
+        insert into user(pid,id,idstr,screen_name,name,province,city,location,description,url,profile_image_url,
+        profile_url,domain,weihao,gender,followers_count,friends_count,statuses_count,favourites_count,created_at,following,
+        allow_all_act_msg,geo_enabled,verified,verified_type,remark,allow_all_comment,avatar_large,avatar_hd,verified_reason,
+        follow_me,online_status,bi_followers_count,lang)
+        values(#{pid},#{id},#{idstr},#{screen_name},#{name},#{province},#{city},#{location},#{description},#{url},#{profile_image_url},
+        #{profile_url},#{domain},#{weihao},#{gender},#{followers_count},#{friends_count},#{statuses_count},#{favourites_count},#{created_at},#{following},
+        #{allow_all_act_msg},#{geo_enabled},#{verified},#{verified_type},#{remark},#{allow_all_comment},#{avatar_large},#{avatar_hd},#{verified_reason},
+        #{follow_me},#{online_status},#{bi_followers_count},#{lang})
+    </insert>
+
+    <update id="update" parameterType="User" useGeneratedKeys="true" keyProperty="kid">
+        update user set
+        pid = #{pid},
+        id = #{id},
+        idstr = #{idstr},
+        screen_name = #{screen_name},
+        name = #{name},
+        province = #{province},
+        city = #{city},
+        location = #{location},
+        description = #{description},
+        url = #{url},
+        profile_image_url = #{profile_image_url},
+        profile_url = #{profile_url},
+        domain = #{domain},
+        weihao = #{weihao},
+        gender = #{gender},
+        followers_count = #{followers_count},
+        friends_count = #{friends_count},
+        statuses_count = #{statuses_count},
+        favourites_count = #{favourites_count},
+        created_at = #{created_at},
+        following = #{following},
+        allow_all_act_msg = #{allow_all_act_msg},
+        geo_enabled = #{geo_enabled},
+        verified = #{verified},
+        verified_type = #{verified_type},
+        remark = #{remark},
+        allow_all_comment = #{allow_all_comment},
+        avatar_large = #{avatar_large},
+        avatar_hd = #{avatar_hd},
+        verified_reason = #{verified_reason},
+        follow_me = #{follow_me},
+        online_status = #{online_status},
+        bi_followers_count = #{bi_followers_count},
+        lang = #{lang}
+        where kid = #{kid}
+    </update>
+
+    <delete id="delete">
+        delete from user where id = #{id}
+    </delete>
+</mapper>
